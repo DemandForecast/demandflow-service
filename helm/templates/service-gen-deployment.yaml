@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Suppliers
+  labels:
+    app: Suppliers
+spec:
+  selector:
+    matchLabels:
+      app: Suppliers
+  replicas:  1
+  template:
+    metadata:
+      labels:
+        app: Suppliers
+    spec:
+      containers:
+       - name: Suppliers
+         image: evolza/Suppliers:latest
+         imagePullPolicy: Always
+         ports:
+          - containerPort: 8080
+            name: rest
+      imagePullSecrets:
+          - name: notavailable
