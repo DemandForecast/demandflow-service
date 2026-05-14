@@ -18,7 +18,7 @@ import (
 // @Success      200  {array}   dto.DemandFlow-Service "Status OK"
 // @Success      202  {array}   dto.DemandFlow-Service "Status Accepted"
 // @Failure      404 "Not Found"
-// @Router      /DeleteSupplier [DELETE]
+// @Router      /DeleteProduct [DELETE]
 
 func DeleteProductApi(c *fiber.Ctx) error {
 
