@@ -1,40 +1,40 @@
 package api
 
 import (
-	"Suppliers/functions"
-	"Suppliers/utils"
+	"DemandFlow-Service/functions"
+	"DemandFlow-Service/utils"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
 
-	"Suppliers/dto"
+	"DemandFlow-Service/dto"
 
 	"github.com/go-playground/validator/v10"
 
-	"Suppliers/dao"
+	"DemandFlow-Service/dao"
 )
 
 // @Summary      UpdateSupplier
-// @Description   This API performs the PUT operation on Supplier. It allows you to update Supplier records.
-// @Tags          Supplier
+// @Description   This API performs the PUT operation on DemandFlow-Service. It allows you to update DemandFlow-Service records.
+// @Tags          DemandFlow-Service
 // @Accept       json
 // @Produce      json
-// @Param        data body dto.Supplier false "string collection"
-// @Success      200  {array}   dto.Supplier "Status OK"
-// @Success      202  {array}   dto.Supplier "Status Accepted"
+// @Param        data body dto.DemandFlow-Service false "string collection"
+// @Success      200  {array}   dto.DemandFlow-Service "Status OK"
+// @Success      202  {array}   dto.DemandFlow-Service "Status Accepted"
 // @Failure      404 "Not Found"
 // @Router      /UpdateSupplier [PUT]
 
-func UpdateCustomerApi(c *fiber.Ctx) error {
+func UpdateProductApi(c *fiber.Ctx) error {
 
-	inputObj := dto.Customer{}
+	inputObj := dto.Product{}
 
 	if err := c.BodyParser(&inputObj); err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
 	// organizationId, err := functions.GetOrganizationId(c)
-    // if err != nil {
+	// if err != nil {
 	// 	return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	// }
 
@@ -55,7 +55,7 @@ func UpdateCustomerApi(c *fiber.Ctx) error {
 		LastUpdatedBy: updatedBy,
 	}
 
-	err = dao.DB_UpdateCustomer(&inputObj)
+	err = dao.DB_UpdateProduct(&inputObj)
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}

@@ -1,7 +1,7 @@
 package functions
 
 import (
-	"Suppliers/dto"
+	"DemandFlow-Service/dto"
 
 	"github.com/gofiber/fiber/v2"
 )

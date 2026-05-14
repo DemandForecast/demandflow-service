@@ -1,52 +1,45 @@
 package api
 
 import (
-	"Suppliers/utils"
+	"DemandFlow-Service/utils"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
 
-	"Suppliers/functions"
+	"DemandFlow-Service/functions"
 
-	"Suppliers/dto"
+	"DemandFlow-Service/dto"
 
 	"github.com/go-playground/validator/v10"
 
-	"Suppliers/dao"
+	"DemandFlow-Service/dao"
 )
 
-// @Summary      CreateSupplier
-// @Description   This API performs the POST operation on Supplier. It allows you to create Supplier records.
-// @Tags          Supplier
+// @Summary      CreateProduct
+// @Description   This API performs the POST operation on DemandFlow-Service. It allows you to create DemandFlow-Service records.
+// @Tags          DemandFlow-Service
 // @Accept       json
 // @Produce      json
-// @Param        data body dto.Supplier false "string collection"
-// @Success      200  {array}   dto.Supplier "Status OK"
-// @Success      202  {array}   dto.Supplier "Status Accepted"
+// @Param        data body dto.DemandFlow-Service false "string collection"
+// @Success      200  {array}   dto.DemandFlow-Service "Status OK"
+// @Success      202  {array}   dto.DemandFlow-Service "Status Accepted"
 // @Failure      404 "Not Found"
-// @Router      /CreateSupplier [POST]
+// @Router      /CreateProduct [POST]
 
-func CreateCustomerApi(c *fiber.Ctx) error {
+func CreateProductApi(c *fiber.Ctx) error {
 
-	inputObj := dto.Customer{}
+	inputObj := dto.Product{}
 
 	if err := c.BodyParser(&inputObj); err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
-	// organizationId, err := functions.GetOrganizationId(c)
-    // if err != nil {
-	// 	return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
-	// }
-
-	// inputObj.OrganizationId = organizationId
-
-	CustomerId, err := functions.Idgenerator("Customers", "CustomerId", "Cus")
+	CustomerId, err := functions.Idgenerator("Products", "ProductId", "Pro")
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
-	inputObj.CustomerId = CustomerId
+	inputObj.ProductId = CustomerId
 
 	validate := validator.New()
 	if validationErr := validate.Struct(&inputObj); validationErr != nil {
@@ -64,7 +57,7 @@ func CreateCustomerApi(c *fiber.Ctx) error {
 		LastUpdatedBy: updatedBy,
 	}
 
-	err = dao.DB_CreateCustomer(&inputObj)
+	err = dao.DB_CreateProduct(&inputObj)
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"Suppliers/dto"
+	"DemandFlow-Service/dto"
 	"os"
 )
 

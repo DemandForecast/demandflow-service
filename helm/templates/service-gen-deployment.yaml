@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Suppliers
+  name: DemandFlow-Service
   labels:
-    app: Suppliers
+    app: DemandFlow-Service
 spec:
   selector:
     matchLabels:
-      app: Suppliers
+      app: DemandFlow-Service
   replicas:  1
   template:
     metadata:
       labels:
-        app: Suppliers
+        app: DemandFlow-Service
     spec:
       containers:
-       - name: Suppliers
-         image: evolza/Suppliers:latest
+       - name: DemandFlow-Service
+         image: evolza/DemandFlow-Service:latest
          imagePullPolicy: Always
          ports:
           - containerPort: 8080
