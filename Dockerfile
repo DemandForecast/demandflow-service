@@ -1,4 +1,4 @@
-FROM golang:1.22
+FROM golang:1.25
 
 # Set the working directory to /app
 WORKDIR /app
