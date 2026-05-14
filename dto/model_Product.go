@@ -8,12 +8,13 @@ type Product struct {
 	SKU             string  `json:"sku"`
 	Description     string  `json:"Description"`
 	Price           float64 `json:"Price"`
-	DiscountPercent float64 `json:"discount_percent"`
-
-	IsPerishable bool   `json:"is_perishable"`
-	StoreID      string `json:"store_id"`
-	SupplierID   string `json:"supplier_id"`
-	// Quantity     int    ` json:"Quantity" `
+	DiscountPercent float64 `json:"DiscountPercent"`
+	Image        string  `json:"Image"`
+	IsPerishable bool   `json:"IsPerishable"`
+	StoreID      string `json:"StoreID"`
+	SupplierID   string `json:"SupplierID"`
+	Quantity     int    ` json:"Quantity" `
+	MOQ		  int    `json:"MOQ"`
 	Deleted       bool   `json:"deleted"`
 	Base
 }
