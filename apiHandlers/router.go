@@ -45,6 +45,12 @@ cg.Delete("/DeletProduct", api.DeleteProductApi)
 cg.Get("/FindProduct", api.FindProductApi)
 cg.Get("/FindallProduct", api.FindallProductApi)
 
+cg.Post("/CreateInventory", api.CreateInventoryApi)
+cg.Put("/UpdateInventory", api.UpdateInventoryApi)
+cg.Delete("/DeletInventory", api.DeleteInventoryApi)
+cg.Get("/FindInventory", api.FindInventoryApi)
+cg.Get("/FindallInventory", api.FindallInventoryApi)
+
 }
 
 func DefaultMappings(cg fiber.Router) {
