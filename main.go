@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Suppliers/apiHandlers"
-	"Suppliers/dbConfig"
-	"Suppliers/integrations"
-	"Suppliers/utils"
+	"DemandFlow-Service/apiHandlers"
+	"DemandFlow-Service/dbConfig"
+	"DemandFlow-Service/integrations"
+	"DemandFlow-Service/utils"
 	"errors"
 	"fmt"
 	"log"
@@ -14,16 +14,16 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// @title          Suppliers API Documentation
+// @title          DemandFlow-Service API Documentation
 // @version        1.0
-// @description    Welcome to the comprehensive API documentation for Suppliers! Here, you'll find everything you need to know about using the application, from getting started to advanced features. Happy exploring!
+// @description    Welcome to the comprehensive API documentation for DemandFlow-Service! Here, you'll find everything you need to know about using the application, from getting started to advanced features. Happy exploring!
 // @contact.name   API Support
 // @Security ApiKeyAuth
 // @contact.url   https://evolza.io
 // @contact.email  cgaas@evolza.io
 // @license.name  Evolza
 // @license.url   http://evolza.io
-// @BasePath  /Suppliers/api
+// @BasePath  /DemandFlow-Service/api
 func init() {
 	err := godotenv.Load(".env")
 	if err != nil {
@@ -36,7 +36,7 @@ func main() {
 	fmt.Println("Starting application")
 
 	app := fiber.New(fiber.Config{
-		AppName:   "Suppliers",
+		AppName:   "DemandFlow-Service",
 		BodyLimit: 4000 * 1024,
 	})
 
@@ -53,7 +53,7 @@ func main() {
 	apiHandlers.Router(app, config)
 
 	// Start the server
-	log.Fatal(app.Listen(":8887"))
+	log.Fatal(app.Listen(":8888"))
 }
 
 func externalIP() (string, error) {

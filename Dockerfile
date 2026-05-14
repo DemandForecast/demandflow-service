@@ -13,12 +13,12 @@ RUN go get
 # Copy only the .go files into the container at /app
 COPY *.go ./
 
-# Build the Go application and name the binary as Suppliers
-RUN go build -o /Suppliers
+# Build the Go application and name the binary as DemandFlow-Service
+RUN go build -o /DemandFlow-Service
 
-RUN chmod +x /Suppliers
+RUN chmod +x /DemandFlow-Service
 
 # Expose port 8888
 EXPOSE 8888
 
-CMD [ "/Suppliers" ]
+CMD [ "/DemandFlow-Service" ]

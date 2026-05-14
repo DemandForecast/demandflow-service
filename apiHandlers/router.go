@@ -1,8 +1,8 @@
 package apiHandlers
 
 import (
-	"Suppliers/api"
-	"Suppliers/dto"
+	"DemandFlow-Service/api"
+	"DemandFlow-Service/dto"
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
@@ -16,7 +16,7 @@ func Router(app *fiber.App, authConfig dto.AuthConfig) {
 	app.Use(logger.New())
 	app.Use(recover.New())
 
-	group := app.Group("/Suppliers/api")
+	group := app.Group("/DemandFlow-Service/api")
 	defaultGroup := app.Group("/")
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
@@ -39,16 +39,16 @@ func Router(app *fiber.App, authConfig dto.AuthConfig) {
 
 func RouteMappings(cg fiber.Router) {
 
-cg.Post("/CreateCustomer", api.CreateCustomerApi)
-cg.Put("/UpdateCustomer", api.UpdateCustomerApi)
-cg.Delete("/DeleteCustomer", api.DeleteCustomerApi)
-cg.Get("/FindCustomer", api.FindCustomerApi)
-cg.Get("/FindallCustomer", api.FindallCustomerApi)
+cg.Post("/CreateProduct", api.CreateProductApi)
+cg.Put("/UpdateProduct", api.UpdateProductApi)
+cg.Delete("/DeletProduct", api.DeleteProductApi)
+cg.Get("/FindProduct", api.FindProductApi)
+cg.Get("/FindallProduct", api.FindallProductApi)
 
 }
 
 func DefaultMappings(cg fiber.Router) {
 	cg.Get("/", func(c *fiber.Ctx) error {
-		return c.JSON(map[string]string{"message": "Suppliers-APP1924 service is up and running", "version": "1.0"})
+		return c.JSON(map[string]string{"message": "DemandFlow-Service is up and running", "version": "1.0"})
 	})
 }

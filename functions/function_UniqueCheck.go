@@ -1,7 +1,7 @@
 package functions
 
 import (
-    "Suppliers/dbConfig"
+    "DemandFlow-Service/dbConfig"
 	"context"
 	"errors"
 	"fmt"

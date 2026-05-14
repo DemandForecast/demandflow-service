@@ -8,7 +8,7 @@ type Base struct {
 	LastUpdatedBy string    `json:"lastUpdatedBy"`
 }
 
-type Products struct {
-	ProductId   string ` json:"ProductId" `
-	Quantity   int ` json:"Quantity" `
-}
+// type Products struct {
+// 	ProductId   string ` json:"ProductId" `
+// 	Quantity   int ` json:"Quantity" `
+// }

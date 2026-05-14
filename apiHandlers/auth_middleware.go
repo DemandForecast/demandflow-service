@@ -1,7 +1,7 @@
 package apiHandlers
 
 import (
-	"Suppliers/dto"
+	"DemandFlow-Service/dto"
 	"encoding/json"
 	"fmt"
 	"io"
