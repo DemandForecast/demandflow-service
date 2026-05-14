@@ -8,7 +8,7 @@ import (
 	"DemandFlow-Service/dao"
 )
 
-// @Summary      FindallSupplier
+// @Summary      FindallProduct
 // @Description   This API performs the GET operation on DemandFlow-Service. It allows you to retrieve DemandFlow-Service records.
 // @Tags          DemandFlow-Service
 // @Accept       json
@@ -17,7 +17,7 @@ import (
 // @Success      200  {array}   dto.DemandFlow-Service "Status OK"
 // @Success      202  {array}   dto.DemandFlow-Service "Status Accepted"
 // @Failure      404 "Not Found"
-// @Router      /FindallSupplier [GET]
+// @Router      /FindallProduct [GET]
 
 func FindallProductsWithPgApi(c *fiber.Ctx) error {
 
@@ -31,7 +31,7 @@ func FindallProductsWithPgApi(c *fiber.Ctx) error {
 	}
 
 	resp := map[string]interface{}{
-		"count":     count,
+		"count":    count,
 		"Products": Products,
 	}
 

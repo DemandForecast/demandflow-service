@@ -14,7 +14,7 @@ import (
 	"DemandFlow-Service/dao"
 )
 
-// @Summary      UpdateSupplier
+// @Summary      UpdateProduct
 // @Description   This API performs the PUT operation on DemandFlow-Service. It allows you to update DemandFlow-Service records.
 // @Tags          DemandFlow-Service
 // @Accept       json
@@ -23,7 +23,7 @@ import (
 // @Success      200  {array}   dto.DemandFlow-Service "Status OK"
 // @Success      202  {array}   dto.DemandFlow-Service "Status Accepted"
 // @Failure      404 "Not Found"
-// @Router      /UpdateSupplier [PUT]
+// @Router      /UpdateProduct [PUT]
 
 func UpdateProductApi(c *fiber.Ctx) error {
 
