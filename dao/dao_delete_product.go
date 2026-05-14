@@ -7,9 +7,9 @@ import (
 	"context"
 )
 
-func DB_DeleteProduct (CustomerId string)  error {
+func DB_DeleteProduct (ProductId string)  error {
   
-        result, err := dbConfig.DATABASE.Collection("Products").UpdateOne(context.Background(), bson.M{"productid": CustomerId}, bson.M{"$set": bson.M{"deleted": true}})
+        result, err := dbConfig.DATABASE.Collection("Products").UpdateOne(context.Background(), bson.M{"productid": ProductId}, bson.M{"$set": bson.M{"deleted": true}})
         if err != nil {
             return err
         }
