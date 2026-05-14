@@ -1,15 +1,15 @@
 package dao
 
 import (
-	"Suppliers/dbConfig"
+	"DemandFlow-Service/dbConfig"
 	"errors"
 	"go.mongodb.org/mongo-driver/bson"
 	"context"
 )
 
-func DB_DeleteCustomerOrder (CustomerOrderId string)  error {
+func DB_DeleteProduct (CustomerId string)  error {
   
-        result, err := dbConfig.DATABASE.Collection("CustomerOrders").UpdateOne(context.Background(), bson.M{"customerorderid": CustomerOrderId}, bson.M{"$set": bson.M{"deleted": true}})
+        result, err := dbConfig.DATABASE.Collection("Products").UpdateOne(context.Background(), bson.M{"productid": CustomerId}, bson.M{"$set": bson.M{"deleted": true}})
         if err != nil {
             return err
         }

@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"Suppliers/dbConfig"
-	"Suppliers/dto"
+	"DemandFlow-Service/dbConfig"
+	"DemandFlow-Service/dto"
 	"context"
 	"errors"
 	"strconv"
@@ -12,9 +12,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func DB_FindallCustomer () (*[]dto.Customer, error) {
-	var objects []dto.Customer
-	results, err := dbConfig.DATABASE.Collection("Customers").Find(context.Background(), bson.M{"deleted":false})
+func DB_FindallProduct () (*[]dto.Product, error) {
+	var objects []dto.Product
+	results, err := dbConfig.DATABASE.Collection("Products").Find(context.Background(), bson.M{"deleted":false})
 	if err != nil {
         if err == mongo.ErrNoDocuments {
         	return nil, nil
@@ -23,9 +23,9 @@ func DB_FindallCustomer () (*[]dto.Customer, error) {
         }
     }
 	for results.Next(context.Background()) {
-		var object dto.Customer
+		var object dto.Product
 		if err = results.Decode(&object); err != nil {
-			return nil, errors.New("Error when Decoding Customers")
+			return nil, errors.New("Error when Decoding Products")
 		}
 		objects = append(objects, object)
 	}
@@ -33,7 +33,7 @@ func DB_FindallCustomer () (*[]dto.Customer, error) {
 }
 
 
-func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer, error) {
+func DB_FindProductsWithPg( page, size, search string) (int64, *[]dto.Product, error) {
     pageInt, err := strconv.Atoi(page)
     if err != nil || pageInt < 1 {
         return 0, nil, errors.New("invalid page number")
@@ -53,7 +53,7 @@ func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer,
             {"name": bson.M{"$regex": search, "$options": "i"}},
             {"email": bson.M{"$regex": search, "$options": "i"}},
             {"address": bson.M{"$regex": search, "$options": "i"}},
-			{"suppliers": bson.M{"$regex": search, "$options": "i"}},
+			{"DemandFlow-Service": bson.M{"$regex": search, "$options": "i"}},
             {"contactperson": bson.M{"$regex": search, "$options": "i"}},
             {"company": bson.M{"$regex": search, "$options": "i"}},
 			{"category": bson.M{"$regex": search, "$options": "i"}},
@@ -75,7 +75,7 @@ func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer,
         }},
     }
 
-    cursor, err := dbConfig.DATABASE.Collection("Customers").Aggregate(ctx, pipeline)
+    cursor, err := dbConfig.DATABASE.Collection("Products").Aggregate(ctx, pipeline)
     if err != nil {
         return 0, nil, err
     }
@@ -85,7 +85,7 @@ func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer,
         Metadata []struct {
             Total int32 `bson:"total"`
         } `bson:"metadata"`
-        Data []dto.Customer `bson:"data"`
+        Data []dto.Product `bson:"data"`
     }
 
     if cursor.Next(ctx) {
@@ -94,11 +94,11 @@ func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer,
         }
     }
 
-    var customers []dto.Customer
+    var Products []dto.Product
     if len(results.Data) > 0 {
-        customers = results.Data
+        Products = results.Data
     } else {
-        customers = []dto.Customer{}
+        Products = []dto.Product{}
     }
 
     var count int64 = 0
@@ -106,5 +106,5 @@ func DB_FindCustomersWithPg( page, size, search string) (int64, *[]dto.Customer,
         count = int64(results.Metadata[0].Total)
     }
 
-    return count, &customers, nil
+    return count, &Products, nil
 }
