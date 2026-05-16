@@ -51,6 +51,10 @@ cg.Delete("/DeletInventory", api.DeleteInventoryApi)
 cg.Get("/FindInventory", api.FindInventoryApi)
 cg.Get("/FindallInventory", api.FindallInventoryApi)
 
+cg.Get("/CountProducts", api.CountProductsApi)
+cg.Get("/TotalInventoryStock", api.TotalInventoryStockApi)
+cg.Get("/Top5ProductsByStock", api.Top5ProductsByStockApi)
+
 }
 
 func DefaultMappings(cg fiber.Router) {
