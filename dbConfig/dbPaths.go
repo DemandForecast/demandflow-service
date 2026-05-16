@@ -7,6 +7,6 @@ import (
 var DATABASE *mongo.Database
 
 
-const DATABASE_URL = "mongodb+srv://pmchamoth_db_user:t0rgjOG2h89qexQD@imomgt.y8j6wpi.mongodb.net/?appName=IMOMgt"
+const DATABASE_URL = "mongodb+srv://ishara_dilshan:WT8P4WSm5MymQ5bz@demandforecastcluster-1.d2z4vqo.mongodb.net/?appName=demandForecastCluster-1"
 
-const DATABASE_NAME ="Demand-Forecast"
+const DATABASE_NAME ="Demand-Flow-Service-DB"
