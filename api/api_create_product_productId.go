@@ -34,7 +34,7 @@ func CreateProductApi(c *fiber.Ctx) error {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
-	CustomerId, err := functions.Idgenerator("Products", "ProductId", "Pro")
+	CustomerId, err := functions.Idgenerator("Products", "ProductId", "PROD")
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
@@ -58,6 +58,31 @@ func CreateProductApi(c *fiber.Ctx) error {
 	}
 
 	err = dao.DB_CreateProduct(&inputObj)
+	if err != nil {
+		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
+	}
+
+	inventoryId, err := functions.Idgenerator("Inventory", "InventoryId", "INV")
+	if err != nil {
+		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
+	}
+
+	inventoryObj := dto.Inventory{
+		InventoryId:       inventoryId,
+		ProductId:         inputObj.ProductId,
+		ProductName:       inputObj.ProductName,
+		StoreID:           inputObj.StoreID,
+		CurrentInventory:  inputObj.Quantity,
+		UnitsSold:         0,
+		UnitsOrdered:      0,
+		MaximumStockLevel: 0,
+		DemandForecast:    0,
+		IsLowStock:        true,
+		Deleted:           false,
+		LastRestockedDate: "",
+		Base:              inputObj.Base,
+	}
+	err = dao.DB_CreateInventory(&inventoryObj)
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}

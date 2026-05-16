@@ -1,19 +1,27 @@
 package dto
 
 type Product struct {
-	ProductId       string  `json:"ProductId"`
-	ProductName     string  `json:"ProductName"`
-	Category        string  `json:"Category"`
-	Brand           string  `json:"Brand"`
-	SKU             string  `json:"sku"`
-	Description     string  `json:"Description"`
-	Price           float64 `json:"Price"`
-	DiscountPercent float64 `json:"discount_percent"`
+	ProductId   string `json:"productId" bson:"productId"`
+	ProductName string `json:"productName" bson:"productName"`
+	Category    string `json:"category" bson:"category"`
+	Brand       string `json:"brand" bson:"brand"`
+	SKU         string `json:"sku" bson:"sku"`
+	Description string `json:"description" bson:"description"`
 
-	IsPerishable bool   `json:"is_perishable"`
-	StoreID      string `json:"store_id"`
-	SupplierID   string `json:"supplier_id"`
-	// Quantity     int    ` json:"Quantity" `
-	Deleted       bool   `json:"deleted"`
+	Price           float64 `json:"price" bson:"price"`
+	DiscountPercent float64 `json:"discountPercent" bson:"discountPercent"`
+
+	IsPerishable bool   `json:"isPerishable" bson:"isPerishable"`
+	StoreID      string `json:"storeId" bson:"storeId"`
+	SupplierID   string `json:"supplierId" bson:"supplierId"`
+	Quantity     int    `json:"quantity" bson:"quantity" `
+	Deleted      bool   `json:"deleted" bson:"deleted"`
+
 	Base
+}
+
+type TopProductStock struct {
+	ProductId        string `bson:"productId" json:"productId"`
+	ProductName      string `bson:"productName" json:"productName"`
+	CurrentInventory int    `bson:"currentInventory" json:"currentInventory"`
 }
