@@ -34,12 +34,12 @@ func CreateInventoryApi(c *fiber.Ctx) error {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
-	CustomerId, err := functions.Idgenerator("Inventory", "InventoryId", "Inv")
+	InventoryId, err := functions.Idgenerator("Inventory", "InventoryId", "INV")
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}
 
-	inputObj.InventoryId = CustomerId
+	inputObj.InventoryId = InventoryId
 
 	validate := validator.New()
 	if validationErr := validate.Struct(&inputObj); validationErr != nil {

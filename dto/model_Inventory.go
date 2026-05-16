@@ -1,17 +1,21 @@
 package dto
 
 type Inventory struct {
-	InventoryId string `json:"InventoryId"`
-	ProductId   string `json:"ProductId"`
-	StoreID     string `json:"StoreID"`
-	CurrentInventory  int `json:"CurrentInventory"`
-	UnitsSold         int `json:"UnitsSold"`
-	UnitsOrdered      int `json:"UnitsOrdered"`
-	MaximumStockLevel int `json:"maximum_stock_level"`
-	DemandForecast float64 `json:"DemandForecast"`
-	LastRestockedDate string `json:"LastRestockedDate"`
-	IsLowStock bool `json:"IsLowStock"`
-	Deleted    bool `json:"deleted"`
+	InventoryId string `json:"inventoryId" bson:"inventoryId"`
+	ProductId   string `json:"productId" bson:"productId"`
+	ProductName string `json:"productName" bson:"productName"`
+	StoreID     string `json:"storeId" bson:"storeId"`
+
+	CurrentInventory  int     `json:"currentInventory" bson:"currentInventory"`
+	UnitsSold         int     `json:"unitsSold" bson:"unitsSold"`
+	UnitsOrdered      int     `json:"unitsOrdered" bson:"unitsOrdered"`
+	MaximumStockLevel int     `json:"maximumStockLevel" bson:"maximumStockLevel"`
+	DemandForecast    float64 `json:"demandForecast" bson:"demandForecast"`
+
+	LastRestockedDate string `json:"lastRestockedDate" bson:"lastRestockedDate"`
+
+	IsLowStock bool `json:"isLowStock" bson:"isLowStock"`
+	Deleted    bool `json:"deleted" bson:"deleted"`
 
 	Base
 }
