@@ -27,7 +27,7 @@ type ForecastSummary struct {
 
 type ProductForecastData struct {
 	ProductID string `json:"productId" bson:"productId"`
-
+	Image      string `json:"image" bson:"image"`
 	FromDate       string  `json:"fromDate" bson:"fromDate"`
 	ToDate         string  `json:"toDate" bson:"toDate"`
 	PredictedDate  string  `json:"predictedDate" bson:"predictedDate"`

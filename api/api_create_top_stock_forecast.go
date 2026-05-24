@@ -20,7 +20,7 @@ import (
 // @Accept       json
 // @Produce      json
 // @Router       /Top5ProductsByStockDemand [POST]
-func PredictTop5ProductsByStockDemandApi(c *fiber.Ctx) error {
+func PredictTop5ProductsByUnitSoldApi(c *fiber.Ctx) error {
 	inputObj := dto.TopStockForecastRequest{}
 
 	if err := c.BodyParser(&inputObj); err != nil {
@@ -53,7 +53,7 @@ func PredictTop5ProductsByStockDemandApi(c *fiber.Ctx) error {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, "ForecastService env variable is missing")
 	}
 
-	topProducts, err := dao.DB_Top5ProductsByStockForForecast()
+	topProducts, err := dao.DB_Top5ProductsByUnitsSoldForForecast()
 	if err != nil {
 		return utils.SendErrorResponse(c, fiber.StatusBadRequest, err.Error())
 	}

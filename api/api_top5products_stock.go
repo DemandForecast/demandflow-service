@@ -7,16 +7,16 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// @Summary      Top 5 Products by Stock
-// @Description  Returns top 5 products with highest stock
+// @Summary      Top 5 Products by Units Sold
+// @Description  Returns top 5 products with highest units sold
 // @Tags         Dashboard
 // @Accept       json
 // @Produce      json
-// @Router       /Top5ProductsByStock [GET]
+// @Router       /Top5ProductsByUnitsSold [GET]
 
-func Top5ProductsByStockApi(c *fiber.Ctx) error {
+func Top5ProductsByUnitsSoldApi(c *fiber.Ctx) error {
 
-	result, err := dao.DB_Top5ProductsByStock()
+	result, err := dao.DB_Top5ProductsByUnitsSold()
 	if err != nil {
 		return utils.SendErrorResponse(
 			c,
@@ -25,7 +25,8 @@ func Top5ProductsByStockApi(c *fiber.Ctx) error {
 		)
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data": result,
-	})
+	// return c.Status(fiber.StatusOK).JSON(fiber.Map{
+	// 	"data": result,
+	// })
+	return c.Status(fiber.StatusAccepted).JSON(&result)
 }
