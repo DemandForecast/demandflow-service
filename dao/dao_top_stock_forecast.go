@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func DB_Top5ProductsByStockForForecast() ([]dto.TopProductStockForForecast, error) {
+func DB_Top5ProductsByUnitsSoldForForecast() ([]dto.TopProductStockForForecast, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
@@ -23,7 +23,7 @@ func DB_Top5ProductsByStockForForecast() ([]dto.TopProductStockForForecast, erro
 		},
 		{
 			"$sort": bson.M{
-				"currentInventory": -1,
+				"unitsSold": -1,
 			},
 		},
 		{
@@ -49,6 +49,14 @@ func DB_Top5ProductsByStockForForecast() ([]dto.TopProductStockForForecast, erro
 				"productId":        1,
 				"productName":      1,
 				"currentInventory": 1,
+				"unitsSold":        1,
+
+				"image": bson.M{
+					"$ifNull": bson.A{
+						"$product.image",
+						"",
+					},
+				},
 
 				"price": bson.M{
 					"$ifNull": bson.A{

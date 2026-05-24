@@ -56,8 +56,10 @@ func RouteMappings(cg fiber.Router) {
 
 	cg.Get("/CountProducts", api.CountProductsApi)
 	cg.Get("/TotalInventoryStock", api.TotalInventoryStockApi)
-	cg.Get("/Top5ProductsByStock", api.Top5ProductsByStockApi)
-	cg.Post("/Top5ProductsByStockDemand", api.PredictTop5ProductsByStockDemandApi)
+	cg.Get("/Top5ProductsByUnitSold", api.Top5ProductsByUnitsSoldApi)
+	cg.Post("/Predict/Top5ProductsByUnitSold", api.PredictTop5ProductsByUnitSoldApi)
+	cg.Get("/Dashboard/Top5ProductsByUnitSold", api.DashboardTop5ProductsByUnitSoldApi)
+
 
 }
 
