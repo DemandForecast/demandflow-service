@@ -26,6 +26,6 @@ func Top5ProductsByStockApi(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data":    result,
+		"data": result,
 	})
 }

@@ -1,4 +1,4 @@
-name: DemandFlow-Service-app1924
+name: DemandFlow-Service
 on:
   push:
     branches:
