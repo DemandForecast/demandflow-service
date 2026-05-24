@@ -52,7 +52,10 @@ func GetNextID(collectionName, Fword string) (string, error) {
 		return "", err
 	}
 
-	NewID := fmt.Sprintf("%s-%d", Fword, idManager.Seq)
+	// NewID := fmt.Sprintf("%s-%d", Fword, idManager.Seq)
+
+	//zero-padding formatting
+	NewID := fmt.Sprintf("%s-%03d", Fword, idManager.Seq)
 
 	return NewID, nil
 }
